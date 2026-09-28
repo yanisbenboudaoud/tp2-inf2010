@@ -85,6 +85,7 @@ abstract class ProbingHashTable<AnyType> extends HashTable<AnyType>{
       for (HashEntry<AnyType> entry : oldArray) {
           if (entry != null && entry.isActive) {
               insert(entry.element);
+          }
       }
   }
   

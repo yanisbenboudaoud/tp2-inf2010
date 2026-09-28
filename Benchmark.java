@@ -27,29 +27,37 @@ public class Benchmark {
         writer.write("Elements,TableSize,Rehash,TempsNs,FacteurCharge,Collisions\n");
 
         for (int nums : sizes) {
-            HashTable<Integer> table = createTable(name);
+            try {
+                HashTable<Integer> table = createTable(name);
 
-            long startTime = System.nanoTime();
+                long startTime = System.nanoTime();
 
-            int GAP = 37;
-            int i = HashTable.MATRICULE % nums;
-            for (int j = 0; j < nums; j++) {
-                i = (i + GAP) % nums;
-                table.insert(i);
+                int GAP = 37;
+                int i = HashTable.MATRICULE % nums;
+                for (int j = 0; j < nums; j++) {
+                    i = (i + GAP) % nums;
+                    table.insert(i);
+                }
+
+                long endTime = System.nanoTime();
+
+                writer.write(nums + "," +
+                        table.tableLength() + "," +
+                        table.rehashCount() + "," +
+                        (endTime - startTime) + "," +
+                        table.loadFactor() + "," +
+                        table.collisionCount() + "\n");
+                writer.flush();
+
+                System.out.println(name + " - " + nums + " elements: termine ("
+                        + (endTime - startTime) / 1_000_000 + " ms).");
+
+            } catch (OutOfMemoryError e) {
+                System.out.println(name + " - " + nums + " elements: ECHEC (memoire insuffisante).");
+                writer.write(nums + ",OOM,OOM,OOM,OOM,OOM\n");
+                writer.flush();
+                System.gc(); // essaie de liberer de la memoire avant de continuer
             }
-
-            long endTime = System.nanoTime();
-
-            writer.write(nums + "," +
-                    table.tableLength() + "," +
-                    table.rehashCount() + "," +
-                    (endTime - startTime) + "," +
-                    table.loadFactor() + "," +
-                    table.collisionCount() + "\n");
-            writer.flush();
-
-            System.out.println(name + " - " + nums + " elements: termine ("
-                    + (endTime - startTime) / 1_000_000 + " ms).");
         }
 
         writer.close();
