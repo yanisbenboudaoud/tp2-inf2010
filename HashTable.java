@@ -8,10 +8,11 @@
  */
 import java.util.Scanner;
 abstract class HashTable<AnyType>{
-  public static int MATRICULE = 1; //Remplacer 1 avec votre matricule d'étudiant (7 chiffres)
+  public static int MATRICULE = 2472221; //Remplacer 1 avec votre matricule d'étudiant (7 chiffres)
   protected static final int DEFAULT_TABLE_SIZE = 11;
   protected int currentSize = 0;
   protected long collisionCounter = 0;
+  protected long rehashCounter = 0;
   
   abstract public int tableLength();
   
@@ -21,9 +22,16 @@ abstract class HashTable<AnyType>{
   abstract public void makeEmpty();
   
   //TODO: à remplir, soit ici, soit dans les sous-classes
-  /*abstract public double loadFactor();
-  abstract public long rehashCount();
-  abstract public long collisionCount();*/
+  public double loadFactor() {
+      return (double) size()/tableLength();
+    }
+  public long rehashCount(){
+      return rehashCounter;
+  }
+  
+  public long collisionCount(){
+      return collisionCounter;
+  }
   
   public int size() {
     return currentSize;

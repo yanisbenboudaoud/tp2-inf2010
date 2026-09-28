@@ -20,6 +20,7 @@ public class QuadraticProbingHashTable<AnyType> extends ProbingHashTable<AnyType
 
         while (array[currentPos] != null &&
                 !array[currentPos].element.equals(x)) {
+            collisionCounter++;
             currentPos += offset; // ieme sondage : +1, +3, +5, ...
             offset += 2;
             if (currentPos >= array.length) {

@@ -76,6 +76,7 @@ abstract class ProbingHashTable<AnyType> extends HashTable<AnyType>{
    * Double (au moins) la taille de la table. Voir section 5.5.
    */
   protected void rehash() {
+      rehashCounter++;
       HashEntry<AnyType>[] oldArray = array;
 
       allocateArray(2 * oldArray.length);
@@ -84,7 +85,6 @@ abstract class ProbingHashTable<AnyType> extends HashTable<AnyType>{
       for (HashEntry<AnyType> entry : oldArray) {
           if (entry != null && entry.isActive) {
               insert(entry.element);
-          }
       }
   }
   

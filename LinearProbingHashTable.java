@@ -18,6 +18,7 @@ public class LinearProbingHashTable<AnyType> extends ProbingHashTable<AnyType>{
 
             while (array[currentPos] != null &&
                     !array[currentPos].element.equals(x)) {
+                collisionCounter++;
                 currentPos++;
                 if (currentPos >= array.length) {
                     currentPos -= array.length;

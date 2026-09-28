@@ -13,7 +13,17 @@ public class DoubleHashingHashTable<AnyType> extends ProbingHashTable<AnyType>{
      * methode findPos dans QuadraticProbingHashTable pour commencer.
      */
     protected int findPos(AnyType x) {
-        return 0;
+        int offset = myhash(x);
+        int currentPos = super.myhash(x);
+        while (array[currentPos] != null &&
+                !array[currentPos].element.equals(x)) {
+            collisionCounter++;
+            currentPos += offset; // saute par "offset" à chaque fois
+            if (currentPos >= array.length) {
+                currentPos -= array.length;
+            }
+        }
+        return currentPos;
     }
     
     @Override
