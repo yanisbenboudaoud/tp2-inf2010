@@ -1,5 +1,6 @@
 import java.io.FileWriter;
 import java.io.IOException;
+//fichier d'automatisation de test généré avec l'intelligence générative (claude.ai)
 
 public class Benchmark {
 
