@@ -6,25 +6,22 @@
  * Analysis in Java* (2e ed.) de Mark Allen Weiss, avec modifications
  * par Susanna Rumsey (2026).
  *
-**/
+ **/
 
-public class LinearProbingHashTable<AnyType> extends ProbingHashTable<AnyType>{
-    /**
-     * TODO: À remplir en utilisant sondage linéaire.  Astuce : examinez le code pour la
-     * methode findPos dans QuadraticProbingHashTable pour commencer.
-     */
+public class LinearProbingHashTable<AnyType> extends ProbingHashTable<AnyType> {
+
     protected int findPos(AnyType x) {
-            int currentPos = myhash(x);
+        int currentPos = myhash(x);
 
-            while (array[currentPos] != null &&
-                    !array[currentPos].element.equals(x)) {
-                collisionCounter++;
-                currentPos++;
-                if (currentPos >= array.length) {
-                    currentPos -= array.length;
-                }
+        while (array[currentPos] != null &&
+                !array[currentPos].element.equals(x)) {
+            collisionCounter++;
+            currentPos++;
+            if (currentPos >= array.length) {
+                currentPos -= array.length;
             }
-            return currentPos;
+        }
+        return currentPos;
     }
 
     /**

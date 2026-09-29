@@ -1,3 +1,4 @@
+
 /**
  * INF2010 - ASD
  * Table de dispersement avec resolution des collisions par
@@ -11,9 +12,9 @@
 import java.util.LinkedList;
 import java.util.List;
 
-public class SeparateChainingHashTable<AnyType> extends HashTable<AnyType>{
+public class SeparateChainingHashTable<AnyType> extends HashTable<AnyType> {
     protected List<AnyType>[] array;
-    
+
     @SuppressWarnings("unchecked")
     public SeparateChainingHashTable(int size) {
         array = new LinkedList[nextPrime(size)];
@@ -21,15 +22,15 @@ public class SeparateChainingHashTable<AnyType> extends HashTable<AnyType>{
             array[i] = new LinkedList<AnyType>();
         }
     }
-    
+
     public SeparateChainingHashTable() {
-      this(DEFAULT_TABLE_SIZE);
+        this(DEFAULT_TABLE_SIZE);
     }
-    
+
     public int tableLength() {
-      return array.length;
+        return array.length;
     }
-    
+
     /**
      * Verifie si x est present dans la table.
      */
@@ -40,12 +41,11 @@ public class SeparateChainingHashTable<AnyType> extends HashTable<AnyType>{
 
     /**
      * Insere x dans la table s'il n'y est pas deja.
-     * TODO: Ajouter une mise à jour de collisionCounter
      */
     public void insert(AnyType x) {
         List<AnyType> whichList = array[myhash(x)];
         if (!whichList.contains(x)) {
-            if(!whichList.isEmpty()){
+            if (!whichList.isEmpty()) {
                 collisionCounter++;
             }
             whichList.add(x);
@@ -76,7 +76,7 @@ public class SeparateChainingHashTable<AnyType> extends HashTable<AnyType>{
             array[i].clear();
         }
         currentSize = 0;
-    }  
+    }
 
     /**
      * Double (au moins) la taille de la table et reinsere tous les

@@ -6,9 +6,9 @@
  * Analysis in Java* (2e ed.) de Mark Allen Weiss, avec modifications
  * par Susanna Rumsey (2026).
  *
-**/
+ **/
 
-public class QuadraticProbingHashTable<AnyType> extends ProbingHashTable<AnyType>{
+public class QuadraticProbingHashTable<AnyType> extends ProbingHashTable<AnyType> {
     /**
      * Trouve la position de x dans la table (sondage quadratique).
      * Si x n'est pas present, retourne la position ou il devrait

@@ -66,11 +66,16 @@ public class Benchmark {
 
     private static HashTable<Integer> createTable(String name) {
         switch (name) {
-            case "SeparateChaining": return new SeparateChainingHashTable<>();
-            case "LinearProbing":    return new LinearProbingHashTable<>();
-            case "QuadraticProbing": return new QuadraticProbingHashTable<>();
-            case "DoubleHashing":    return new DoubleHashingHashTable<>();
-            default: throw new IllegalArgumentException("Type inconnu: " + name);
+            case "SeparateChaining":
+                return new SeparateChainingHashTable<>();
+            case "LinearProbing":
+                return new LinearProbingHashTable<>();
+            case "QuadraticProbing":
+                return new QuadraticProbingHashTable<>();
+            case "DoubleHashing":
+                return new DoubleHashingHashTable<>();
+            default:
+                throw new IllegalArgumentException("Type inconnu: " + name);
         }
     }
 }

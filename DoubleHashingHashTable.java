@@ -7,9 +7,8 @@
  * par Susanna Rumsey (2026).
  *
  */
-public class DoubleHashingHashTable<AnyType> extends ProbingHashTable<AnyType>{
+public class DoubleHashingHashTable<AnyType> extends ProbingHashTable<AnyType> {
     /**
-     * TODO: À remplir en utilisant hashage double ou f(i) = i*myhash(x).  Astuce : examinez le code pour la
      * methode findPos dans QuadraticProbingHashTable pour commencer.
      */
     protected int findPos(AnyType x) {
@@ -25,20 +24,20 @@ public class DoubleHashingHashTable<AnyType> extends ProbingHashTable<AnyType>{
         }
         return currentPos;
     }
-    
+
     @Override
     protected int myhash(AnyType x) {
-      if (MATRICULE == 0) {
-        throw new ArithmeticException("Entrez votre matricule dans DoubleHashingHashTable.java avant de proceder.");
-      }
-      int hashVal = x.hashCode();
-      int length = this.tableLength();
-      int R = nextPrime(MATRICULE % length);
-      while (R >= length){
-        R -= length;
-        R = nextPrime(R);
-      }
-      return R - (hashVal % R);
+        if (MATRICULE == 0) {
+            throw new ArithmeticException("Entrez votre matricule dans DoubleHashingHashTable.java avant de proceder.");
+        }
+        int hashVal = x.hashCode();
+        int length = this.tableLength();
+        int R = nextPrime(MATRICULE % length);
+        while (R >= length) {
+            R -= length;
+            R = nextPrime(R);
+        }
+        return R - (hashVal % R);
     }
 
     public static void main(String[] args) {
