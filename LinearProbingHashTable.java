@@ -10,6 +10,8 @@
 
 public class LinearProbingHashTable<AnyType> extends ProbingHashTable<AnyType> {
 
+    // Implémenté : sondage linéaire f(i) = i, on avance d'une case a la fois
+    // jusqu'a trouver x ou une case libre, en comptant chaque collision.
     protected int findPos(AnyType x) {
         int currentPos = myhash(x);
 

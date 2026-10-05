@@ -8,9 +8,10 @@
  *
  */
 public class DoubleHashingHashTable<AnyType> extends ProbingHashTable<AnyType> {
-    /**
-     * methode findPos dans QuadraticProbingHashTable pour commencer.
-     */
+    // Implémenté : sondage par hashage double f(i) = i * myhash(x).
+    // myhash(x) (redéfini plus bas) donne le pas de saut "offset", et la
+    // position de départ utilise le hash de base de la classe parent (super.myhash)
+    // pour que le point de départ soit indépendant du pas de saut.
     protected int findPos(AnyType x) {
         int offset = myhash(x);
         int currentPos = super.myhash(x);

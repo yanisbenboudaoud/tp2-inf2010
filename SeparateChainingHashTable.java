@@ -45,6 +45,7 @@ public class SeparateChainingHashTable<AnyType> extends HashTable<AnyType> {
     public void insert(AnyType x) {
         List<AnyType> whichList = array[myhash(x)];
         if (!whichList.contains(x)) {
+            // Ajouté : une collision est comptée quand x atterrit dans une liste non vide
             if (!whichList.isEmpty()) {
                 collisionCounter++;
             }
@@ -84,7 +85,7 @@ public class SeparateChainingHashTable<AnyType> extends HashTable<AnyType> {
      */
     @SuppressWarnings("unchecked")
     protected void rehash() {
-        rehashCounter++;
+        rehashCounter++; // Ajouté : comptabilise ce rehash
         List<AnyType>[] oldLists = array;
 
         // Nouvelle table de taille (au moins) le double, premiere

@@ -26,14 +26,17 @@ abstract class HashTable<AnyType> {
 
     abstract public void makeEmpty();
 
+    // Implémenté : facteur de charge = nombre d'éléments / taille de la table
     public double loadFactor() {
         return (double) size() / tableLength();
     }
 
+    // Implémenté : retourne le compteur de rehash, incrémenté dans rehash()
     public long rehashCount() {
         return rehashCounter;
     }
 
+    // Implémenté : retourne le compteur de collisions, incrémenté dans insert()/findPos()
     public long collisionCount() {
         return collisionCounter;
     }
